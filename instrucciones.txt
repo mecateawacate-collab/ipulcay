@@ -1,0 +1,555 @@
+ESTRUCTURA DE MI APP FLUTTER CON FIREBASE
+
+Esta app sirve para registrar pedidos de clientes, guardar la ubicación del pedido y permitir que el repartidor pueda ver la dirección exacta en Google Maps.
+
+La idea principal es:
+
+1. Crear usuarios para la empresa.
+2. Los usuarios recorren la ciudad ofreciendo productos.
+3. Cuando un cliente compra, el usuario registra el pedido.
+4. El pedido se guarda en Firebase.
+5. El pedido guarda coordenadas de ubicación.
+6. El repartidor puede abrir esa ubicación en Maps.
+7. El pedido puede cambiar de estado: pendiente, en camino, entregado, etc.
+
+
+==================================================
+LIB
+==================================================
+
+La carpeta lib es el corazón de la aplicación.
+
+Aquí vive todo el código principal de Flutter.
+
+Dentro de lib están:
+- main.dart
+- modulos
+- nucleo
+- tema
+
+
+==================================================
+MAIN.DART
+==================================================
+
+main.dart es el punto de inicio de la app.
+
+Es como el botón de encendido.
+
+Aquí se inicializa Flutter, Firebase y se carga la primera pantalla de la aplicación.
+
+No debería tener demasiado código.
+
+Su función principal es arrancar la app.
+
+
+==================================================
+MODULOS
+==================================================
+
+La carpeta modulos contiene las partes principales de la aplicación.
+
+Cada módulo representa una zona o función importante de la app.
+
+Ejemplos:
+- login
+- menu
+- pedidos
+- usuarios
+- mapa
+- reparto
+
+Idea mental:
+
+"Cada módulo es una sección grande de mi app."
+
+
+==================================================
+MODULOS / LOGIN
+==================================================
+
+Aquí va todo lo relacionado con el inicio de sesión.
+
+Archivo actual:
+- login.dart
+
+Sirve para mostrar la pantalla donde el usuario ingresa a la app.
+
+Más adelante puede tener:
+- pantalla_login.dart
+- servicio_login.dart
+
+pantalla_login.dart:
+Muestra la interfaz visual del login.
+
+servicio_login.dart:
+Se conecta con Firebase Auth para iniciar sesión, cerrar sesión o validar usuarios.
+
+
+==================================================
+MODULOS / MENU
+==================================================
+
+Aquí va el menú principal de la app.
+
+Archivo actual:
+- menu.dart
+
+Sirve para mostrar las opciones principales después del login.
+
+Ejemplo:
+- Registrar pedido
+- Ver pedidos
+- Ver mapa
+- Gestionar usuarios
+- Reparto
+
+Idea mental:
+
+"El menú es la puerta que conecta con las demás partes de la app."
+
+
+==================================================
+NUCLEO
+==================================================
+
+La carpeta nucleo contiene herramientas generales que puede usar toda la app.
+
+No pertenece a una sola pantalla.
+
+Aquí van cosas reutilizables.
+
+Ejemplo:
+- constantes
+- funciones
+- validaciones
+- widgets_comunes
+
+Idea mental:
+
+"Nucleo es la caja de herramientas general de mi aplicación."
+
+
+==================================================
+NUCLEO / CONSTANTES
+==================================================
+
+Aquí van valores fijos que se repiten en la app.
+
+Archivo actual:
+- estados_pedido.dart
+
+Sirve para guardar textos o valores que no deberían escribirse muchas veces manualmente.
+
+Ejemplo:
+- pendiente
+- en_camino
+- entregado
+- cancelado
+
+Esto evita errores por escribir mal un estado.
+
+Ejemplo mental:
+
+"Constantes guarda palabras importantes que no quiero repetir a mano."
+
+
+==================================================
+NUCLEO / FUNCIONES
+==================================================
+
+Aquí van funciones pequeñas y reutilizables.
+
+Archivos actuales:
+- formato_fecha.dart
+- formato_texto.dart
+
+formato_fecha.dart:
+Sirve para convertir fechas a un formato más bonito o entendible.
+
+Ejemplo:
+Convertir una fecha de Firebase a:
+20/05/2026
+
+formato_texto.dart:
+Sirve para limpiar o mejorar textos.
+
+Ejemplo:
+- quitar espacios
+- poner primera letra en mayúscula
+- limpiar nombres
+- limpiar direcciones
+
+Idea mental:
+
+"Funciones guarda herramientas pequeñas que puedo usar en muchas partes."
+
+
+==================================================
+NUCLEO / VALIDACIONES
+==================================================
+
+Aquí van las reglas para revisar si los datos están correctos.
+
+Archivos actuales:
+- validar_usuario.dart
+- validar_pedido.dart
+
+validar_usuario.dart:
+Sirve para revisar datos de usuarios.
+
+Ejemplo:
+- correo válido
+- nombre no vacío
+- contraseña correcta
+- rol válido
+
+validar_pedido.dart:
+Sirve para revisar datos del pedido.
+
+Ejemplo:
+- cliente no vacío
+- teléfono válido
+- cantidad mayor a 0
+- ubicación registrada
+- producto seleccionado
+
+Idea mental:
+
+"Validaciones son los guardianes que evitan guardar datos malos."
+
+
+==================================================
+NUCLEO / WIDGETS_COMUNES
+==================================================
+
+Aquí van piezas visuales que se reutilizan en varias pantallas.
+
+Archivos actuales:
+- boton_principal.dart
+- campo_texto.dart
+- mensaje_error.dart
+
+boton_principal.dart:
+Botón reutilizable para toda la app.
+
+campo_texto.dart:
+Campo de texto reutilizable para formularios.
+
+mensaje_error.dart:
+Widget para mostrar errores de forma ordenada.
+
+Idea mental:
+
+"Widgets comunes son piezas visuales que uso muchas veces."
+
+
+==================================================
+TEMA
+==================================================
+
+La carpeta tema contiene el diseño global de la app.
+
+Archivos actuales:
+- colores_app.dart
+- tema_app.dart
+- textos_app.dart
+
+Sirve para evitar repetir estilos en cada pantalla.
+
+Aquí van:
+- colores principales
+- estilos de texto
+- decoración general
+- tema claro u oscuro
+- bordes
+- tamaños
+- estilos de botones
+
+Idea mental:
+
+"Tema es la ropa visual de mi aplicación."
+
+
+==================================================
+TEMA / COLORES_APP.DART
+==================================================
+
+Aquí van los colores principales de la app.
+
+Ejemplo:
+- color principal
+- color secundario
+- color de fondo
+- color de error
+- color de texto
+
+Sirve para no escribir Colors.blue, Colors.red o Colors.black en todos lados.
+
+Si quiero cambiar el color principal de la app, lo cambio aquí y afecta a toda la app.
+
+
+==================================================
+TEMA / TEMA_APP.DART
+==================================================
+
+Aquí se configura el ThemeData principal de Flutter.
+
+Sirve para definir el estilo global.
+
+Ejemplo:
+- color principal
+- estilo de botones
+- fondo de pantallas
+- estilo de AppBar
+- bordes generales
+
+Idea mental:
+
+"tema_app.dart controla la apariencia general de Flutter."
+
+
+==================================================
+TEMA / TEXTOS_APP.DART
+==================================================
+
+Aquí van los estilos de texto.
+
+Ejemplo:
+- título grande
+- subtítulo
+- texto normal
+- texto pequeño
+- texto de error
+
+Sirve para que todos los textos mantengan el mismo estilo visual.
+
+Idea mental:
+
+"textos_app.dart ordena cómo se ven las letras de mi app."
+
+
+==================================================
+PATRÓN DE NOMBRES RECOMENDADO
+==================================================
+
+Para mantener orden, usar siempre nombres claros en español.
+
+Recomendado:
+
+pantalla_
+Para interfaces visuales.
+
+Ejemplo:
+pantalla_login.dart
+pantalla_pedidos.dart
+pantalla_crear_pedido.dart
+
+
+servicio_
+Para conexión con Firebase, base de datos, mapas o procesos externos.
+
+Ejemplo:
+servicio_login.dart
+servicio_pedidos.dart
+servicio_mapa.dart
+
+
+modelo_
+Para definir la forma de los datos.
+
+Ejemplo:
+modelo_usuario.dart
+modelo_pedido.dart
+
+
+validar_
+Para revisar datos antes de guardar.
+
+Ejemplo:
+validar_usuario.dart
+validar_pedido.dart
+
+
+formato_
+Para transformar datos a una forma más limpia o visual.
+
+Ejemplo:
+formato_fecha.dart
+formato_texto.dart
+
+
+==================================================
+DIFERENCIA ENTRE PANTALLA, SERVICIO, MODELO Y FUNCION
+==================================================
+
+PANTALLA:
+Es lo que el usuario ve y toca.
+
+Ejemplo:
+Formulario para registrar pedido.
+
+
+SERVICIO:
+Es el archivo que trabaja por detrás.
+
+Se conecta con Firebase, guarda datos, obtiene datos o actualiza información.
+
+Ejemplo:
+Guardar un pedido en Firestore.
+
+
+MODELO:
+Es el molde de los datos.
+
+Define qué información tiene un usuario o pedido.
+
+Ejemplo de pedido:
+- id
+- cliente
+- teléfono
+- producto
+- cantidad
+- estado
+- latitud
+- longitud
+- fecha
+
+
+FUNCION:
+Es una herramienta pequeña.
+
+Sirve para hacer una tarea simple y reutilizable.
+
+Ejemplo:
+- limpiar texto
+- formatear fecha
+- validar teléfono
+- abrir Google Maps
+
+
+==================================================
+REGLA MENTAL PRINCIPAL
+==================================================
+
+Si es visual, va en pantalla o widget.
+
+Si habla con Firebase, va en servicio.
+
+Si define datos, va en modelo.
+
+Si revisa datos, va en validaciones.
+
+Si transforma datos, va en funciones.
+
+Si se usa en toda la app, va en nucleo.
+
+Si es diseño global, va en tema.
+
+Si pertenece a una sección grande de la app, va en modulos.
+
+
+==================================================
+ESTRUCTURA ACTUAL
+==================================================
+
+lib/
+│
+├── main.dart
+│
+├── modulos/
+│   ├── login/
+│   │   └── login.dart
+│   │
+│   └── menu/
+│       └── menu.dart
+│
+├── nucleo/
+│   ├── constantes/
+│   │   └── estados_pedido.dart
+│   │
+│   ├── funciones/
+│   │   ├── formato_fecha.dart
+│   │   └── formato_texto.dart
+│   │
+│   ├── validaciones/
+│   │   ├── validar_usuario.dart
+│   │   └── validar_pedido.dart
+│   │
+│   └── widgets_comunes/
+│       ├── boton_principal.dart
+│       ├── campo_texto.dart
+│       └── mensaje_error.dart
+│
+└── tema/
+    ├── colores_app.dart
+    ├── tema_app.dart
+    └── textos_app.dart
+
+
+==================================================
+ESTRUCTURA FUTURA RECOMENDADA
+==================================================
+
+Cuando la app crezca, se pueden agregar más módulos:
+
+lib/
+│
+├── main.dart
+│
+├── modulos/
+│   ├── login/
+│   ├── menu/
+│   ├── usuarios/
+│   ├── pedidos/
+│   ├── mapa/
+│   └── reparto/
+│
+├── nucleo/
+│   ├── constantes/
+│   ├── funciones/
+│   ├── validaciones/
+│   └── widgets_comunes/
+│
+└── tema/
+
+
+==================================================
+MÓDULOS FUTUROS
+==================================================
+
+usuarios:
+Para crear, listar y editar usuarios de la empresa.
+
+pedidos:
+Para registrar pedidos, ver pedidos y cambiar estados.
+
+mapa:
+Para mostrar coordenadas y abrir ubicaciones en Google Maps.
+
+reparto:
+Para que el repartidor vea pedidos pendientes y pueda entregarlos.
+
+boletas:
+Para generar comprobantes, constancias o resumen de pedidos.
+
+
+==================================================
+CONSEJO FINAL
+==================================================
+
+La estructura debe ser fácil de leer.
+
+No importa si está en español o inglés.
+
+Lo importante es que al ver un archivo yo entienda rápidamente:
+
+- qué hace
+- dónde pertenece
+- cuándo debo usarlo
+
+Mi app debe crecer de forma ordenada.
+
+Cada archivo debe tener una responsabilidad clara.
+
+Mientras más claro sea el nombre, más fácil será mantener el proyecto.
